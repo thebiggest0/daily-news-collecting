@@ -15,58 +15,58 @@
     },
     "3": {
         "title": "Who is Crown Prince Frederik, Denmark's soon-to-be king?",
-        "Category": "News",
+        "category": "News",
         "length": "Medium",
         "summary": "The article profiles Crown Prince Frederik of Denmark, who is set to become King Frederik X, covering his life, military and educational background, informal style, and his role in Denmark's monarchy.",
-        "link": "https://ca.news.yahoo.com/crown-prince-frederik-denmarks-soon-052024642.html"
+        "url": "https://ca.news.yahoo.com/crown-prince-frederik-denmarks-soon-052024642.html"
     },
     "4": {
         "title": "Taiwan expects China to apply pressure on incoming government after election",
-        "Category": "News",
+        "category": "News",
         "length": "Medium",
         "summary": "The article discusses Taiwan's anticipation of increased military and economic pressure from China on its new government following elections, amidst a backdrop of heightened cross-strait tensions.",
-        "link": "https://ca.news.yahoo.com/taiwan-expects-china-apply-pressure-051725130.html"
+        "url": "https://ca.news.yahoo.com/taiwan-expects-china-apply-pressure-051725130.html"
     },
     "5": {
         "title": "US and UK strikes target Houthi rebels in Yemen",
-        "Category": "News",
+        "category": "News",
         "length": "Medium",
         "summary": "The article reports on US and UK military air strikes against Houthi rebel targets in Yemen in response to attacks on commercial vessels in the Red Sea.",
-        "link": "https://ca.news.yahoo.com/us-uk-strikes-target-houthi-005044677.html"
+        "url": "https://ca.news.yahoo.com/us-uk-strikes-target-houthi-005044677.html"
     },
     "6": {
         "title": "Bengaluru: Why English is dividing people in India's Silicon Valley",
-        "Category": "News",
+        "category": "News",
         "length": "Long",
         "summary": "This article explores the linguistic tensions in Bengaluru, India, focusing on protests against English billboards and the push for Kannada prominence, reflecting the city's changing linguistic and cultural dynamics.",
-        "link": "https://ca.news.yahoo.com/bengaluru-kannada-protests-why-english-002040375.html"
+        "url": "https://ca.news.yahoo.com/bengaluru-kannada-protests-why-english-002040375.html"
     },
     "7": {
         "title": "Can Nikki Haley really stop Donald Trump in 2024?",
-        "Category": "Politics",
+        "category": "Politics",
         "length": "Long",
         "summary": "The article examines Nikki Haley's presidential campaign and its chances against Donald Trump in the 2024 Republican race, focusing on her strategies, voter appeal, and the challenges she faces within the current political landscape of the Republican Party.",
-        "link": "https://ca.news.yahoo.com/nikki-haley-really-stop-donald-035850683.html"
+        "url": "https://ca.news.yahoo.com/nikki-haley-really-stop-donald-035850683.html"
     },
     "8": {
         "title": "ESPN apologises for Emmy entries won with fake names",
-        "Category": "Entertainment",
+        "category": "Entertainment",
         "length": "Medium",
         "summary": "The article reports on ESPN's apology and return of over 30 Emmy awards after a discovery that fake names were used to circumvent eligibility rules, prompting an investigation and disciplinary actions.",
-        "link": "https://ca.news.yahoo.com/espn-apologises-emmy-entries-won-022156721.html"
+        "url": "https://ca.news.yahoo.com/espn-apologises-emmy-entries-won-022156721.html"
     },
     "9": {
         "title": "Stock market today: Asian shares are mostly higher after a mixed close on Wall Street",
-        "Category": "Finance",
+        "category": "Finance",
         "length": "Medium",
         "summary": "The article reports on the recent performance of Asian stock markets, highlighting their mostly positive trends following mixed results on Wall Street, with a focus on the Japanese, Hong Kong, and Shanghai stock indices.",
-        "link": "https://ca.news.yahoo.com/stock-market-today-asian-shares-081719581.html"
+        "url": "https://ca.news.yahoo.com/stock-market-today-asian-shares-081719581.html"
     },
     "10": {
         "title": "Public rights of way blocked in 32,000 places",
-        "Category": "Regional",
+        "category": "Regional",
         "length": "Long",
         "summary": "The article covers a BBC investigation into the widespread obstruction of public rights of way across England and Wales, highlighting the challenges and legal battles faced by walkers and local authorities.",
-        "link": "https://ca.news.yahoo.com/public-rights-way-blocked-32-024526968.html"
+        "url": "https://ca.news.yahoo.com/public-rights-way-blocked-32-024526968.html"
   }
 }
