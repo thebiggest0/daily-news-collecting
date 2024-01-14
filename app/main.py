@@ -20,7 +20,7 @@ def main():
     save.clear_textfile()
 
     # writing to database
-    config = SQL.sql_access()
+    config = SQL.sql_access_local()
     data_news = save.read_json('../data/news.json')
     SQL.sql_write_data(config, data_news)
 
