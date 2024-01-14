@@ -34,9 +34,15 @@ def process_textfile():
     return data
 
 
+def clear_textfile():
+    location = '../data/textfile.txt'
+    with open(location, 'w'):
+        pass
+
+
 def textfile_to_json(data):
     dictionary = json.loads(data)
-    with open('../data/test.json', 'w') as file:
+    with open('../data/news.json', 'w') as file:
         json.dump(dictionary, file, indent=4)
 
 
