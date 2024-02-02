@@ -1,21 +1,29 @@
 """
 ADD A DOCSTRING
 """
-from data_manage import save
-
-def get_links():
-    links = []
-    for _ in range(10):
-        link = 'test'
-        links.append(link)
-
-    return links
+from datetime import date, timedelta
+import requests
 
 
+def get_newsapi_org(category, day):
+    url = ('https://newsapi.org/v2/everything?'
+           f'q={category}'
+           f'&from={day}'
+           '&sortBy=popularity'
+           '&pageSize=20'
+           '&apiKey=')
+
+    response = requests.get(url)
+    data = response.json()
+    news = data['articles']
+    return news
 
 
 def main():
-    pass
+    day = (date.today() - timedelta(days=1))
+    for category in ["technology", "world+news", "vancouver+canada", "sports", "business"]:
+        news = get_newsapi_org(category, day)
+        print(news)
 
 if __name__ == "__main__":
     main()
