@@ -1,0 +1,7 @@
+PyAutoGUI~=0.9.54
+opencv-python~=4.9.0.80
+numpy~=1.26.3
+pillow~=10.2.0
+openai~=1.7.2
+mysql-connector-python~=8.2.0
+requests~=2.31.0
