@@ -2,6 +2,7 @@
 ADD A DOCSTRING
 """
 from datetime import date, timedelta
+from data import user_info
 import requests
 
 
@@ -11,7 +12,7 @@ def get_newsapi_org(category, day):
            f'&from={day}'
            '&sortBy=popularity'
            '&pageSize=20'
-           '&apiKey=')
+           f'&apiKey={user_info.NEWSAPI_KEY}')
 
     response = requests.get(url)
     data = response.json()
