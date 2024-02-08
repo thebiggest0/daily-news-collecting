@@ -40,6 +40,18 @@ def clear_textfile():
         pass
 
 
+def record_dates_read(date):
+    location = '../data/date_recorded.txt'
+
+    with open(location, 'r') as file:
+        content = file.readlines()
+
+    content.insert(0, str(date) + "\n")
+
+    with open(location, 'w') as file:
+        file.writelines(content)
+
+
 def textfile_to_json(data):
     dictionary = json.loads(data)
     with open('../data/news.json', 'w') as file:
