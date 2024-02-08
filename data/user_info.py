@@ -11,4 +11,3 @@ LOCAL_PASSWORD = "local_password"  # Replace with your local database password
 LOCAL_HOST = "localhost"  # Typically 'localhost' for a local database
 LOCAL_DATABASE = "local_database_name"  # Replace with the name of your local database
 LOCAL_PORT = 3306  # Replace with the port your local database is using (3306 is common for MySQL)
-
