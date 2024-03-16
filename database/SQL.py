@@ -1,26 +1,28 @@
 import mysql.connector
 from data_manage import save
+from data import user_info
 import json
 import re
 
 
 def sql_access_cloud():
     config = {
-        'user': 'your_username',  # Replace with your RDS username, often 'admin'
-        'password': 'your_password',  # Replace with your RDS password
-        'host': 'your_rds_instance_endpoint',  # Replace with your RDS instance endpoint
-        'database': 'your_database_name',  # Replace with your database name
-        'port': 3306  # Replace with your RDS instance port, default is 3306 for MySQL
+        'user': user_info.CLOUD_USER,  # Replace with your RDS username, often 'admin'
+        'password': user_info.CLOUD_PASSWORD,  # Replace with your RDS password
+        'host': user_info.CLOUD_HOST,  # Replace with your RDS instance endpoint
+        'database': user_info.CLOUD_DATABASE,  # Replace with your database name
+        'port': user_info.CLOUD_PORT  # Replace with your RDS instance port, default is 3306 for MySQL
     }
+    return config
 
 
 def sql_access_local():
     config = {
-        'user': 'local_user',  # Replace with your local database username
-        'password': 'local_password',  # Replace with your local database password
-        'host': 'localhost',  # Typically 'localhost' for a local database
-        'database': 'local_database_name',  # Replace with the name of your local database
-        'port': 3306  # Replace with the port your local database is using (3306 is common for MySQL)
+        'user': user_info.LOCAL_USER,
+        'password': user_info.LOCAL_PASSWORD,
+        'host': user_info.LOCAL_HOST,
+        'database': user_info.LOCAL_DATABASE,
+        'port': user_info.LOCAL_PORT
     }
     return config
 
@@ -91,18 +93,88 @@ def sql_write_data_new(config, entry, category, popular):
     connect.close()
 
 
-def sql_read_data(config):
+def sql_read_data_general(config):
     connect = mysql.connector.connect(**config)
     cursor = connect.cursor(dictionary=True)
 
-    cursor.execute(f"SELECT * FROM news")
+    cursor.execute(f"SELECT * FROM popular_news")
 
     rows = cursor.fetchall()
-    with open('../data/sql_data.json', 'w') as file:
-        json.dump(rows, file, indent=4)
+    for row in rows:
+        print_info(row)
 
     cursor.close()
     connect.close()
+
+
+def sql_read_data_specific(config):
+    connect = mysql.connector.connect(**config)
+    cursor = connect.cursor(dictionary=True)
+
+    attributes = {"title", "category", "description", "source", "url", "all"}
+
+    category = {"technology", "world", "sports", "business"}
+    date = {}
+    source = {}
+
+    user_input_category = input("Category: ").lower()
+    user_input_date = input("Date: ")
+    user_input_source = input("Source: ").title()
+
+
+    # Define your variable
+    category = '%'
+    publish_date = "2024-01-29"
+    source = "%"
+
+    # Use a parameter placeholder (%s) in the query
+    # query = "SELECT * FROM popular_news WHERE category = %s"
+    # cursor.execute(query, (category,))
+
+    query = "SELECT * FROM popular_news WHERE category LIKE %s AND source LIKE %s AND publishDate LIKE %s"
+    # cursor.execute(query, (category, source, publish_date,))
+    cursor.execute(query, (user_input_category, user_input_source, user_input_date,))
+
+    rows = cursor.fetchall()
+    for row in rows:
+        print_info(row)
+
+    cursor.close()
+    connect.close()
+
+
+def print_info(row):
+    try:
+        print(f"Title: {row['title']}")
+    except Exception:
+        print("Title: Null")
+
+    try:
+        print(f"Date: {row['publishDate']}")
+    except Exception:
+        print("Date: Null")
+
+    try:
+        print(f"Category: {row['category']}")
+    except Exception:
+        print("Category: Null")
+
+    try:
+        print(f"Description: {row['description']}")
+    except Exception:
+        print("Description: Null")
+
+    try:
+        print(f"Source: {row['source']}")
+    except Exception:
+        print("Source: Null")
+
+    try:
+        print(f"URL: {row['url']}")
+    except Exception:
+        print("URL: Null")
+
+    print()
 
 
 def main():
