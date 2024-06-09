@@ -48,6 +48,10 @@ def sql_write_data_old(config, data):
 
 
 def sql_write_data_new(config, entry, category, popular):
+    # Check if article removed
+    if entry['content'] == '[Removed]':
+        return
+
     # Connect to the MySQL database
     connect = mysql.connector.connect(**config)
     cursor = connect.cursor()
@@ -119,7 +123,7 @@ def sql_read_data_specific(config):
 
     user_input_category = input("Category: ").lower()
     user_input_date = input("Date: ")
-    user_input_source = input("Source: ").title()
+    # user_input_source = input("Source: ").title()
 
 
     # Define your variable
@@ -131,13 +135,40 @@ def sql_read_data_specific(config):
     # query = "SELECT * FROM popular_news WHERE category = %s"
     # cursor.execute(query, (category,))
 
-    query = "SELECT * FROM popular_news WHERE category LIKE %s AND source LIKE %s AND publishDate LIKE %s"
+    # query = "SELECT * FROM popular_news WHERE category LIKE %s AND source LIKE %s AND publishDate LIKE %s"
+    query = "SELECT * FROM popular_news WHERE category LIKE %s AND publishDate LIKE %s"
     # cursor.execute(query, (category, source, publish_date,))
-    cursor.execute(query, (user_input_category, user_input_source, user_input_date,))
+    cursor.execute(query, [user_input_category, user_input_date])
 
     rows = cursor.fetchall()
     for row in rows:
         print_info(row)
+
+    cursor.close()
+    connect.close()
+
+
+def sql_all_data_to_json(config):
+    connect = mysql.connector.connect(**config)
+    cursor = connect.cursor(dictionary=True)
+
+    attributes = {"title", "category", "description", "source", "url", "all"}
+
+    category = {"technology", "world", "sports", "business"}
+    date = {}
+    source = {}
+
+    # query = "SELECT * FROM popular_news WHERE category LIKE %s AND source LIKE %s AND publishDate LIKE %s"
+    query = "SELECT * FROM popular_news"
+    # cursor.execute(query, (category, source, publish_date,))
+    cursor.execute(query)
+
+    rows = cursor.fetchall()
+    for row in rows:
+        print_info(row)
+        row['publishDate'] = str(row['publishDate'])
+        with open('../data/data.jsonl', 'a') as file:
+            file.write(json.dumps(row) + '\n')
 
     cursor.close()
     connect.close()
@@ -171,6 +202,16 @@ def print_info(row):
 
     try:
         print(f"URL: {row['url']}")
+    except Exception:
+        print("URL: Null")
+
+    try:
+        print(f"Author: {row['author']}")
+    except Exception:
+        print("URL: Null")
+
+    try:
+        print(f"Length: {row['length']}")
     except Exception:
         print("URL: Null")
 
